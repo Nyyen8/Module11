@@ -9,14 +9,13 @@ class StudentTestCases(unittest.TestCase):
        del self.Student
 
 
-
     def test_object_created_required_attributes(self):
-        self.assertEqual(True, False)
+        self.assertEqual(self.Student._last_name, 'Bob')
+        self.assertEqual(self.Student._first_name, 'Billy')
+        self.assertEqual(self.Student._major, 'Billy bobbing')
+        self.assertEqual(self.Student._gpa, 4.0)
 
     def test_object_created_all_attributes(self):
-        self.assertEqual(True, False)
-
-    def test_test_object_created_required_attributes(self):
         self.assertEqual(True, False)
 
     def test_student_str(self):
