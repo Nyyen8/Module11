@@ -19,7 +19,7 @@ class StudentTestCases(unittest.TestCase):
         self.assertEqual(True, False)
 
     def test_student_str(self):
-        self.assertEqual(True, False)
+        self.assertEqual(str(self.Student), 'Bob, Billy is majoring in Billy bobbing with a GPA of 4.0')
 
     def test_object_not_created_error_last_name(self):
         self.assertEqual(True, False)
