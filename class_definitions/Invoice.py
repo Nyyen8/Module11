@@ -52,7 +52,7 @@ class Invoice:
         self._items_with_price.update(item_entry_dict)
 
 
-    '''Function to create output string based off an employee class'''
+    '''Function to create output string based off invoice item_entry_dict contents'''
     def create_invoice(self):
         tax_rate = .07
         tax = 0
