@@ -13,10 +13,12 @@ class StudentTestCases(unittest.TestCase):
         self.assertEqual(self.Student._last_name, 'Bob')
         self.assertEqual(self.Student._first_name, 'Billy')
         self.assertEqual(self.Student._major, 'Billy bobbing')
-        self.assertEqual(self.Student._gpa, 4.0)
 
     def test_object_created_all_attributes(self):
-        self.assertEqual(True, False)
+        self.assertEqual(self.Student._last_name, 'Bob')
+        self.assertEqual(self.Student._first_name, 'Billy')
+        self.assertEqual(self.Student._major, 'Billy bobbing')
+        self.assertEqual(self.Student._gpa, 4.0)
 
     def test_student_str(self):
         self.assertEqual(str(self.Student), 'Bob, Billy is majoring in Billy bobbing with a GPA of 4.0')
