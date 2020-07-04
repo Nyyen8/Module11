@@ -12,10 +12,10 @@ class Student:
     '''Student class constructor'''
     #Constructor
     def __init__(self, lname, fname, major, gpa=0.0):
-        self._last_name = vFunc.valid_alpha_check(lname) #last name, required: string
-        self._first_name = vFunc.valid_alpha_check(fname) #first name, required: string
-        self._major = vFunc.valid_alpha_check(major)  # first name, required: string
-        self._gpa = gpa  # student's GPA, optional: int/float
+        self._last_name = vFunc.valid_name_check(lname) #last name, required: string
+        self._first_name = vFunc.valid_name_check(fname) #first name, required: string
+        self._major = vFunc.valid_name_check(major)  # first name, required: string
+        self._gpa = vFunc.valid_gpa_check(gpa)  # student's GPA, optional: int/float
 
     def __str__(self):
         return self._last_name + ', ' + self._first_name + ' is majoring in ' + self._major + ' with a GPA of ' + str(self._gpa)

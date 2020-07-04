@@ -24,16 +24,22 @@ class StudentTestCases(unittest.TestCase):
         self.assertEqual(str(self.Student), 'Bob, Billy is majoring in Billy bobbing with a GPA of 4.0')
 
     def test_object_not_created_error_last_name(self):
-        self.assertEqual(True, False)
+        with self.assertRaises(ValueError):
+            test = std.Student('0000', 'Billy', 'Billy bobbing')
 
     def test_object_not_created_error_first_name(self):
-        self.assertEqual(True, False)
+        with self.assertRaises(ValueError):
+            test = std.Student('Bob', '0000', 'Billy bobbing')
 
     def test_object_not_created_error_major(self):
-        self.assertEqual(True, False)
+        with self.assertRaises(ValueError):
+            test = std.Student('Bob', 'Billy', '0000')
 
     def test_object_not_created_error_gpa(self):
-        self.assertEqual(True, False)
+        with self.assertRaises(ValueError):
+            test = std.Student('Bob', 'Billy', 'Billy bobbing', 'abcd')
+            test = std.Student('Bob', 'Billy', 'Billy bobbing', 5.0)
+            test = std.Student('Bob', 'Billy', 'Billy bobbing', -1)
 
 
 if __name__ == '__main__':

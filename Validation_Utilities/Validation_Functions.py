@@ -7,6 +7,16 @@ Defining a variety of validation utility functions.
 """
 
 from datetime import datetime as date
+import re
+
+def valid_name_check(input_string):
+    result = bool(re.fullmatch(r"^[^\W0-9_]+([ :'\-‧][^\W0-9_]+)*?$", input_string))
+    if result:
+        return input_string
+    else:
+        raise ValueError('Invalid name: ' + input_string + '. Non-alphabetic or legal connecting characters.')
+'''Function to verify that input is valid name'''
+
 
 def valid_id_check(input_num):
     if isinstance(input_num, int):
@@ -18,6 +28,16 @@ def valid_id_check(input_num):
     else:
         raise AttributeError('"Customer" object has no attribute _cust_id')
 '''Function to verify that input is valid customer ID'''
+
+def valid_gpa_check(input_num):
+    if isinstance(input_num, (int, float)):
+        if input_num <= 4.0 and input_num >= 0.0:
+            return input_num
+        else:
+            raise ValueError('Invalid GPA: ' + str(input_num) + '. Outside of acceptable range.')
+    else:
+        raise ValueError('Invalid GPA: ' + str(input_num) + '. Not int or float variable.')
+'''Function to verify that input is valid gpa'''
 
 def valid_alpha_check(input_string):
     result = input_string.replace(" ", "").isalpha()
