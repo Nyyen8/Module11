@@ -1,4 +1,23 @@
+"""
+Program: Validation_Functions.py
+Author: Paul Elsea
+Last Modified: 07/3/2020
+
+Defining a variety of validation utility functions.
+"""
+
 from datetime import datetime as date
+
+def valid_id_check(input_num):
+    if isinstance(input_num, int):
+        if len(str(input_num)) == 10:
+            return input_num
+        else:
+            print('Error: Invalid customer ID: ' + str(input_num))
+            exit()
+    else:
+        raise AttributeError('"Customer" object has no attribute _cust_id')
+'''Function to verify that input is valid customer ID'''
 
 def valid_alpha_check(input_string):
     result = input_string.replace(" ", "").isalpha()
@@ -18,13 +37,18 @@ def valid_alpha_num_check(input_string):
         exit()
 '''Function to verify that input uses only alpha-numeric characters'''
 
+def format_phone_num(input_phone):
+    if len(input_phone) == 10:
+        return str(input_phone[:3] + '-' + input_phone[3:6] + '-' + input_phone[6:])
+    elif len(input_phone) == 7:
+        return str(input_phone[:3] + '-' + input_phone[4:])
+'''Function to add dashes to phone nums to make them more readable in output'''
+
 def valid_phone_check(input_num):
     result = input_num.replace(" ", "").replace('(', '').replace(')', '').replace('-', '').replace('.', '')
     if result.isnumeric():
-        if len(result) == 10:
-            return str(result[:3] + '-' + result[3:6] + '-' + result[6:])
-        elif len(result) == 7:
-            return str(result[:3] + '-' + result[4:])
+        if len(result) == 10 or len(result) == 7:
+            return result
         else:
             print('Error: Invalid phone number: ' + str(input_num))
             exit()
@@ -41,10 +65,10 @@ def state_abbrv_or_full(input_string):
 '''Function to determine if state abbreviation or full name has been input'''
 
 def valid_state_abbrv_check(input_string):
-    state_abbrv_list = ['al', 'ak', 'as', 'arizona', 'ak', 'ca', 'co', 'ct', 'de', 'dc', 'fl', 'ga', 'gu', 'hi', 'id',
-                        'il', 'in', 'ia', 'ks', 'ky', 'la', 'me', 'md', 'ma', 'mi', 'mn', 'ms', 'mo', 'mt', 'ne', 'nv',
-                        'nh', 'nj', 'nm', 'ny', 'nc', 'nd', 'oh', 'ok', 'or', 'pa', 'pr', 'ri', 'sc', 'sd', 'tn', 'tx',
-                        'ut', 'vt', 'vi', 'va', 'wa', 'wv', 'wi', 'wy']
+    state_abbrv_list = ['al', 'ak', 'as', 'az', 'ak', 'ca', 'co', 'ct', 'de', 'dc', 'fl', 'ga', 'gu', 'hi', 'id', 'il',
+                        'in', 'ia', 'ks', 'ky', 'la', 'me', 'md', 'ma', 'mi', 'mn', 'ms', 'mo', 'mt', 'ne', 'nv', 'nh',
+                        'nj', 'nm', 'ny', 'nc', 'nd', 'oh', 'ok', 'or', 'pa', 'pr', 'ri', 'sc', 'sd', 'tn', 'tx', 'ut',
+                        'vt', 'vi', 'va', 'wa', 'wv', 'wi', 'wy']
     if input_string.lower() in state_abbrv_list:
         return input_string.upper()
     else:
@@ -58,9 +82,10 @@ def valid_state_check(input_string):
                   'delaware', 'district of columbia', 'florida', 'georgia', 'guam', 'hawaii', 'idaho', 'illinois',
                   'indiana', 'iowa', 'kansas', 'kentucky', 'louisiana', 'maine', 'maryland', 'massachusetts',
                   'michigan', 'minnesota', 'mississippi', 'missouri', 'montana', 'nebraska', 'nevada', 'new hampshire',
-                  'new jersey', 'new mexico', 'new york', 'north carolina', 'north dakota', 'ohio', 'oklahoma', 'oregon',
-                  'pennsylvania', 'puerto rico', 'rhode island', 'south carolina', 'south dakota', 'tennessee', 'texas',
-                  'utah', 'vermont', 'virgin islands', 'virginia', 'washington', 'west virginia', 'wisconsin', 'wyoming']
+                  'new jersey', 'new mexico', 'new york', 'north carolina', 'north dakota', 'ohio', 'oklahoma',
+                  'oregon', 'pennsylvania', 'puerto rico', 'rhode island', 'south carolina', 'south dakota',
+                  'tennessee', 'texas', 'utah', 'vermont', 'virgin islands', 'virginia', 'washington', 'west virginia',
+                  'wisconsin', 'wyoming']
     if input_string.lower() in state_list:
         return input_string.title()
     else:
