@@ -21,7 +21,7 @@ class HourlyEmployee(Employee):
             # phone number, required: 10 digit number'''
         super().__init__(lname, fname, addStr, addCity, addState, phone)
         self._salary = round(vFunc.valid_float_num(hourly_pay), 2)  # employee's hourly pay, required: number
-        self.__start_date = vFunc.valid_date(startDate)  # employee's start date, required: date
+        self._start_date = vFunc.valid_date(startDate)  # employee's start date, required: date
 
 
     '''Functions to change individual characteristics of an employee object'''
@@ -33,7 +33,7 @@ class HourlyEmployee(Employee):
 
     '''Function to raise salary of SalariedEmployee object'''
     def give_raise(self, raise_amount):
-        self._salary = round(vFunc.valid_float_num(raise_amount), 2)  # employee's hourly pay, required: int/float
+        self._salary += round(vFunc.valid_float_num(raise_amount), 2)  # employee's hourly pay, required: int/float
 
     '''Function to create output string based off an employee class'''
     def display(self):
@@ -42,11 +42,11 @@ class HourlyEmployee(Employee):
                 self._city_address + ', ' + self._state_address + '\n' +
                 vFunc.format_phone_num(self._phone_num) + '\n' +
                 'Hourly Employee: $' + str(self._salary) + '/hour' + '\n' +
-                'Start Date: ' + str(self.__start_date) + '\n')
+                'Start Date: ' + str(self._start_date) + '\n')
 
 if __name__ == '__main__':
     hourEmp = HourlyEmployee('Elsea', 'Paul', '1234 Place', 'Town', 'UT', '1234567890', '01-01-2001', 10)
     print(hourEmp.display())
-    hourEmp.give_raise(12)
+    hourEmp.give_raise(2)
     print(hourEmp.display())
     del(hourEmp)
