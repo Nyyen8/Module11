@@ -20,7 +20,7 @@ def valid_name_check(input_string):
 '''Function to verify that input is valid customer ID'''
 def valid_id_check(input_num):
     if isinstance(input_num, int):
-        if len(str(input_num)) == 10:
+        if len(str(input_num)) == 9:
             return input_num
         else:
             print('Error: Invalid customer ID: ' + str(input_num))

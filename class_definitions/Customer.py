@@ -1,7 +1,7 @@
 """
 Program: Customer.py
 Author: Paul Elsea
-Last Modified: 07/3/2020
+Last Modified: 07/7/2020
 
 Defining the Customer class.
 """
@@ -44,17 +44,12 @@ class Customer:
 
     '''Function to create output string based off an employee class'''
     def display(self):
-        return (str(self._cust_id) + '\n' +
-                (self._first_name) + ' ' + str(self._last_name) + '\n' +
-                self._street_address + '\n' +
-                self._city_address + ', ' + self._state_address + '\n' +
-                vFunc.format_phone_num(self._phone_num) + '\n')
+        return ('Customer #: '.ljust(22, '.') + str(self._cust_id) + '\n' +
+                'Name: '.ljust(22, '.') +(self._first_name) + ' ' + str(self._last_name) + '\n' +
+                'Address: '.ljust(22, '.') +self._street_address + '\n' +
+                'City/State: '.ljust(22, '.') +self._city_address + ', ' + self._state_address + '\n' +
+                'Phone#: '.ljust(22, '.') +vFunc.format_phone_num(self._phone_num) + '\n')
 
 if __name__ == '__main__':
     customer1 = Customer(1234567890, 'Threepwood', 'Guy', '1234 Place', 'Town', 'UT', '1234567890')
     print(customer1.display())
-
-    '''The following customer will cause an exception to be thrown in valid_id_check(), part of the Validation_Utilities
-    module. The exception occurs before display() can be called.'''
-    customer2 = Customer('abcd', 'Threepwood', 'Guy', '1234 Place', 'Town', 'UT', '1234567890')
-    print(customer2.display())
